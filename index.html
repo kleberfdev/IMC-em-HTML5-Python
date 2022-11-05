@@ -32,7 +32,7 @@
         def IMC(*args, **kwargs):
             peso1 = Element('peso').element.value
             altura1 = Element('altura').element.value
-            imc = float(peso1) / float(float(altura1) **2)
+            imc = float(peso1) / (float(altura1) **2)
 
             Element('resultado0').element.innerText = "O IMC dessa pessoa é de {:.2f}".format(imc)
             if imc < 16:
