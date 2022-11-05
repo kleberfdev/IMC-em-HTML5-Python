@@ -1,60 +1,59 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+    <py-env>
+        - numpy
+        - matplotlib
+      </py-env>
+    <style>
+        body {
+            text-align: center;
+            font-size: 18px;
+        }
+    </style>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>pyton</title>
-
-    <link rel="stylesheet" href="https://pyscript.net/latest/pyscript.css" />
-<script defer src="https://pyscript.net/latest/pyscript.js"></script>
-
+    <meta name="viewport" content="width=inp, initial-scale=1.0">
+    <script defer src="https://pyscript.net/alpha/pyscript.js"></script>
+    <title>Document</title>
 </head>
 <body>
-<h1>IMC</h1>
-'Qual é o seu peso ? (Kg)
-<input type="number" id="peso">
-<br><br>
+   <section>
+    <div>Informe seu peso:</div>
+    <input type="text" id="peso" name="peso" value="">
+    <div>Informe sua altura:</div>
+    <input type="text" id="altura" name="altura" value="">
+    <br>
+    <button id="submit-button" type="submit" pys-onClick="IMC">Calcular</button>
+    <br><br>
+    <div id="resultado0"></div>
+    <div id="resultado"></div>
+    <py-script> 
+        def IMC(*args, **kwargs):
+            peso1 = Element('peso').element.value
+            altura1 = Element('altura').element.value
+            imc = float(peso1) / float(float(altura1) **2)
 
-'Qual é a sua altura ? (Metros)'
-<input type="number" id="altura">
-
-<br><br>
-
-<input type="button" onclick="Resultado()" value="Verificar">
-
-   
-    <div id="saida"></div>
-    <py-script output="saida">
-        def Resultado():
-            def IMC():
-                peso = 130#document.getElementById("peso")) #Descobrir como puxar a id = "peso"
-                altura = 1.83 #document.getElementById("altura")) #Descobrir como puxar a id = "altura"
-                imc = peso / (altura **2)
-                return imc
-            res = IMC()
-
-
-            print (" O IMC dessa pessoa é de {:.2f}".format(res))
-                    
-            if res < 16:
-                print("Abaixo do peso (Grave)!")
-            elif res < 17:
-                print("Abaixo do peso (Moderado)!")
-            elif res < 18.5:
-                print("Abaixo do peso!")
-            elif res < 25:
-                print("Saudável!")
-            elif res < 30:
-                print("Sobrepeso!")
-            elif res < 35:
-                print("Obesidade Grau I!")
-            elif res < 40:
-                print("Obesidade Grau II (severa)!")
+            Element('resultado0').element.innerText = "O IMC dessa pessoa é de {:.2f}".format(imc)
+            if imc < 16:
+                Element('resultado').element.innerText = "Abaixo do peso (Grave)!"
+            elif imc < 17:
+                Element('resultado').element.innerText = "Abaixo do peso (Moderado)!"
+            elif imc < 18.5:
+                Element('resultado').element.innerText = "Abaixo do peso!"
+            elif imc < 25:
+                Element('resultado').element.innerText = "Saudável!"
+            elif imc < 30:
+                Element('resultado').element.innerText = "Sobrepeso!"
+            elif imc < 35:
+                Element('resultado').element.innerText = "Obesidade Grau I!"
+            elif imc < 40:
+                Element('resultado').element.innerText = "Obesidade Grau II (severa)!"
             else:
-                print("Obesidade Grau III (mórbida)!")
-        Resultado()
-        
-    </py-script>
+                Element('resultado').element.innerText = "Obesidade Grau III (mórbida)!"
+            
+
+    </py-script> 
+   </section>
 </body>
 </html>
